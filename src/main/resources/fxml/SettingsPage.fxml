@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="649.0" prefWidth="640.0"
+            style="-fx-background-color: linear-gradient(to bottom right, #0b1f33, #4da6ff);"
+            xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ca.ucalgary.seng300.ui.controllers.SettingsPageController">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="80.0" layoutY="42.0"
+              prefHeight="565.0" prefWidth="480.0" spacing="18.0"
+              style="-fx-background-color: rgba(10,25,45,0.92); -fx-background-radius: 20; -fx-border-color: rgba(77,166,255,0.25); -fx-border-width: 1.2; -fx-border-radius: 20; -fx-padding: 28;">
+            <children>
+                <ImageView fitHeight="69.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/gameDinoLogoBig.png" />
+                    </image>
+                </ImageView>
+
+                <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #e6f3ff;" text="SETTINGS" />
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #b9d9ff;" text="Manage your account details" />
+                <Region prefHeight="8.0" />
+
+                <VBox maxWidth="1.7976931348623157E308" spacing="12.0">
+                    <children>
+
+                        <!-- 1. Username field with Edit/Save -->
+                        <VBox spacing="8.0" style="-fx-background-color: #0f2942; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25);">
+                            <padding>
+                                <Insets bottom="14.0" left="18.0" right="18.0" top="14.0" />
+                            </padding>
+                            <children>
+                                <Label style="-fx-text-fill: #8fc4ff; -fx-font-size: 14px; -fx-font-weight: bold;" text="Username" />
+                                <TextField fx:id="settingsUsernameField"
+                                           maxWidth="1.7976931348623157E308"
+                                           prefHeight="44.0"
+                                           editable="false"
+                                           style="-fx-background-color: rgba(10,25,45,0.9); -fx-text-fill: #e6f3ff; -fx-font-size: 13px; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 8; -fx-border-width: 1; -fx-prompt-text-fill: #3d6080;" />
+                                <HBox spacing="10.0" maxWidth="1.7976931348623157E308">
+                                    <Button fx:id="editUsernameButton"
+                                            HBox.hgrow="ALWAYS"
+                                            maxWidth="1.7976931348623157E308"
+                                            mnemonicParsing="false"
+                                            onAction="#handleSettingsEdit"
+                                            prefHeight="42.0"
+                                            text="EDIT"
+                                            style="-fx-background-color: rgba(77,166,255,0.12); -fx-text-fill: #7fbfff; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 8; -fx-border-width: 1; -fx-cursor: hand;" />
+                                    <Button fx:id="saveUsernameButton"
+                                            HBox.hgrow="ALWAYS"
+                                            maxWidth="1.7976931348623157E308"
+                                            mnemonicParsing="false"
+                                            onAction="#handleSettingsSave"
+                                            prefHeight="42.0"
+                                            text="SAVE"
+                                            disable="true"
+                                            style="-fx-background-color: linear-gradient(to right, #4da6ff, #1e90ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 10; -fx-border-radius: 10; -fx-cursor: hand;" />
+                                </HBox>
+                                <HBox fx:id="settingsNotification"
+                                      alignment="CENTER"
+                                      maxWidth="1.7976931348623157E308"
+                                      prefHeight="36.0"
+                                      visible="false"
+                                      managed="false"
+                                      style="-fx-background-color: rgba(10,25,45,0.9); -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-width: 1;">
+                                    <padding>
+                                        <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
+                                    </padding>
+                                    <Label fx:id="settingsNotificationLabel"
+                                           style="-fx-font-size: 12px; -fx-font-weight: bold;"
+                                           text="" />
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- 2. Change Avatar toggle button -->
+                        <Button maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false"
+                                onAction="#handleChangeAvatarClick"
+                                prefHeight="46.0"
+                                text="CHANGE AVATAR"
+                                style="-fx-background-color: #0f2942; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25); -fx-cursor: hand;" />
+
+                        <!-- 2b. Avatar Selection Pane (hidden until toggle) -->
+                        <VBox fx:id="avatarPane"
+                              visible="false"
+                              managed="false"
+                              spacing="10.0"
+                              style="-fx-background-color: #0f2942; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25);">
+                            <padding>
+                                <Insets bottom="14.0" left="18.0" right="18.0" top="14.0" />
+                            </padding>
+                            <children>
+                                <Label style="-fx-text-fill: #8fc4ff; -fx-font-size: 14px; -fx-font-weight: bold;" text="SELECT AVATAR" />
+                                <HBox alignment="CENTER" spacing="16.0">
+                                    <children>
+                                        <ToggleButton fx:id="avatarButton1"
+                                                      mnemonicParsing="false"
+                                                      onAction="#handleSelectSettingsAvatar1"
+                                                      style="-fx-background-color: rgba(77,166,255,0.12); -fx-background-radius: 10; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 10; -fx-border-width: 1; -fx-cursor: hand; -fx-padding: 6;">
+                                            <graphic>
+                                                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../images/avatar1.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </ToggleButton>
+                                        <ToggleButton fx:id="avatarButton2"
+                                                      mnemonicParsing="false"
+                                                      onAction="#handleSelectSettingsAvatar2"
+                                                      style="-fx-background-color: rgba(77,166,255,0.12); -fx-background-radius: 10; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 10; -fx-border-width: 1; -fx-cursor: hand; -fx-padding: 6;">
+                                            <graphic>
+                                                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../images/avatar2.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </ToggleButton>
+                                        <ToggleButton fx:id="avatarButton3"
+                                                      mnemonicParsing="false"
+                                                      onAction="#handleSelectSettingsAvatar3"
+                                                      style="-fx-background-color: rgba(77,166,255,0.12); -fx-background-radius: 10; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 10; -fx-border-width: 1; -fx-cursor: hand; -fx-padding: 6;">
+                                            <graphic>
+                                                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../images/avatar3.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </ToggleButton>
+                                        <ToggleButton fx:id="avatarButton4"
+                                                      mnemonicParsing="false"
+                                                      onAction="#handleSelectSettingsAvatar4"
+                                                      style="-fx-background-color: rgba(77,166,255,0.12); -fx-background-radius: 10; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 10; -fx-border-width: 1; -fx-cursor: hand; -fx-padding: 6;">
+                                            <graphic>
+                                                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../images/avatar4.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </ToggleButton>
+                                    </children>
+                                </HBox>
+                                <HBox spacing="10.0">
+                                    <Button mnemonicParsing="false"
+                                            onAction="#applySettingsAvatar"
+                                            HBox.hgrow="ALWAYS"
+                                            maxWidth="1.7976931348623157E308"
+                                            prefHeight="42.0"
+                                            text="APPLY AVATAR"
+                                            style="-fx-background-color: linear-gradient(to right, #4da6ff, #1e90ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 10; -fx-border-radius: 10; -fx-cursor: hand;" />
+                                    <Button mnemonicParsing="false"
+                                            onAction="#handleCancelAvatarClick"
+                                            prefHeight="42.0"
+                                            text="CANCEL"
+                                            style="-fx-background-color: rgba(77,166,255,0.12); -fx-text-fill: #7fbfff; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 8; -fx-border-width: 1; -fx-cursor: hand;" />
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- 3. Change Email -->
+                        <Button fx:id="changeEmailButton"
+                                maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false"
+                                onAction="#handleChangeEmailClick"
+                                prefHeight="46.0"
+                                text="CHANGE EMAIL"
+                                style="-fx-background-color: #0f2942; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25); -fx-cursor: hand;" />
+
+                        <!-- 4. Change Password -->
+                        <Button fx:id="changePasswordButton"
+                                maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false"
+                                onAction="#handleChangePasswordClick"
+                                prefHeight="46.0"
+                                text="CHANGE PASSWORD"
+                                style="-fx-background-color: #0f2942; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25); -fx-cursor: hand;" />
+
+                        <!-- 5. Password Pane -->
+                        <VBox fx:id="passwordPane"
+                              visible="false"
+                              managed="false"
+                              spacing="10"
+                              style="-fx-background-color: rgba(8,20,42,0.92); -fx-background-radius: 18; -fx-padding: 24 22 24 22; -fx-border-color: rgba(77,166,255,0.25); -fx-border-width: 1; -fx-border-radius: 18;">
+                            <Label text="Change Password" style="-fx-text-fill: #e6f3ff; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                            <PasswordField fx:id="oldPasswordField"
+                                           prefHeight="42.0"
+                                           promptText="Enter old password"
+                                           style="-fx-background-color: rgba(10,25,45,0.9); -fx-text-fill: #e6f3ff; -fx-font-size: 13px; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 8; -fx-border-width: 1; -fx-prompt-text-fill: #3d6080;" />
+                            <Label fx:id="oldPasswordError" style="-fx-text-fill: #ff6b6b; -fx-font-size: 11px;" />
+                            <PasswordField fx:id="newPasswordField"
+                                           prefHeight="42.0"
+                                           promptText="Enter new password"
+                                           style="-fx-background-color: rgba(10,25,45,0.9); -fx-text-fill: #e6f3ff; -fx-font-size: 13px; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 8; -fx-border-width: 1; -fx-prompt-text-fill: #3d6080;" />
+                            <Label fx:id="newPasswordError" style="-fx-text-fill: #ff6b6b; -fx-font-size: 11px;" />
+                            <PasswordField fx:id="confirmPasswordField"
+                                           prefHeight="42.0"
+                                           promptText="Confirm new password"
+                                           style="-fx-background-color: rgba(10,25,45,0.9); -fx-text-fill: #e6f3ff; -fx-font-size: 13px; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 8; -fx-border-width: 1; -fx-prompt-text-fill: #3d6080;" />
+                            <Label fx:id="confirmPasswordError" style="-fx-text-fill: #ff6b6b; -fx-font-size: 11px;" />
+                            <HBox spacing="10">
+                                <Button text="SAVE PASSWORD"
+                                        onAction="#handleSavePasswordClick"
+                                        prefHeight="42.0"
+                                        style="-fx-background-color: linear-gradient(to right, #4da6ff, #1e90ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 10; -fx-border-radius: 10; -fx-cursor: hand;" />
+                                <Button text="CANCEL"
+                                        onAction="#handleCancelPasswordClick"
+                                        prefHeight="42.0"
+                                        style="-fx-background-color: rgba(77,166,255,0.12); -fx-text-fill: #7fbfff; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.25); -fx-border-radius: 8; -fx-border-width: 1; -fx-cursor: hand;" />
+                            </HBox>
+                        </VBox>
+
+                        <!-- 6. Log Out -->
+                        <Button fx:id="logOutButton"
+                                maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false"
+                                onAction="#handleLogOutClick"
+                                prefHeight="46.0"
+                                text="LOG OUT"
+                                style="-fx-background-color: rgba(200,50,50,0.15); -fx-text-fill: #ff8080; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(255,100,100,0.3); -fx-cursor: hand;" />
+
+                        <!-- 7. Return -->
+                        <Button fx:id="returnButton"
+                                maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false"
+                                onAction="#handleReturnButtonClick"
+                                prefHeight="46.0"
+                                text="RETURN"
+                                style="-fx-background-color: rgba(77,166,255,0.12); -fx-text-fill: #7fbfff; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25); -fx-cursor: hand;" />
+
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

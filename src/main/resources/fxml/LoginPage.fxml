@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="720.0" prefWidth="720.0" style="-fx-background-color: linear-gradient(to bottom right, #0b1f33, #4da6ff);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng300.ui.controllers.LoginPageController">
+   <children>
+
+      <VBox alignment="CENTER" layoutX="110.0" layoutY="95.0" maxHeight="540.0" maxWidth="500.0" prefHeight="540.0" prefWidth="500.0" spacing="14.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(5,22,45,0.96), rgba(6,30,60,0.96)); -fx-background-radius: 28; -fx-border-color: rgba(77,166,255,0.22); -fx-border-width: 1.2; -fx-border-radius: 28; -fx-padding: 34 36 34 36;">
+         <children>
+            <ImageView fitHeight="78.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/GameDinoLogoFull.png" />
+               </image>
+            </ImageView>
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="PLAYER LOGIN" textFill="#e6f3ff" />
+            <Label style="-fx-font-size: 14px;" text="Sign in to continue" textFill="#b9d9ff" />
+            <Region prefHeight="16.0" />
+            <VBox alignment="TOP_LEFT" prefWidth="420.0" spacing="6.0">
+            <children>
+               <Label style="-fx-font-size: 14px; -fx-font-weight: 700;" text="Username" textFill="#E2E8F0" />
+               <TextField fx:id="username" maxWidth="1.7976931348623157E308" prefHeight="48.0" promptText="Enter username" style="-fx-background-color: #0c2743; -fx-text-fill: white; -fx-prompt-text-fill: #8ec5ff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.22); -fx-padding: 0 14 0 14; -fx-font-size: 15px;" />
+            </children>
+            </VBox>
+            <VBox alignment="TOP_LEFT" prefWidth="420.0" spacing="6.0">
+               <children>
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: 700;" text="Password" textFill="#E2E8F0" />
+                  <PasswordField fx:id="password" maxWidth="1.7976931348623157E308" prefHeight="48.0" promptText="Enter password" style="-fx-background-color: #0c2743; -fx-text-fill: white; -fx-prompt-text-fill: #8ec5ff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.22); -fx-padding: 0 14 0 14; -fx-font-size: 15px;" />
+               </children>
+            </VBox>
+            <Label fx:id="errorLabel" managed="false" style="-fx-font-size: 12px; -fx-font-weight: 600;" text="" textFill="#ff6b6b" visible="false" wrapText="true" />
+            <Button fx:id="loginButton" maxWidth="1.7976931348623157E308" onAction="#handleLoginClick" prefHeight="50" style="-fx-background-color: linear-gradient(to right, #5aaeff, #2997ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 17px; -fx-background-radius: 14; -fx-cursor: hand;" text="LOGIN" />
+            <HBox alignment="CENTER" spacing="8">
+                <children>
+                    <Label text="Don't have an account?" textFill="#d6e8ff" />
+                    <Hyperlink fx:id="createAccountHyperlink" onAction="#handleCreateAccountClick" style="-fx-text-fill: #7fc0ff; -fx-font-weight: bold;" text="Create Account" />
+                </children>
+            </HBox>
+         </children></VBox>
+   </children>
+</StackPane>

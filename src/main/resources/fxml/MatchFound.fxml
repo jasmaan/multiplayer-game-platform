@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<StackPane prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0d1b35, #0a2a4a, #0d1b35);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng300.ui.controllers.MatchFoundController">
+
+   <!-- Radial glow overlay -->
+   <Region mouseTransparent="true" style="-fx-background-color: radial-gradient(center 50% 0%, radius 60%, rgba(59,130,246,0.15), transparent);" />
+
+   <!-- Main card -->
+   <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="540.0" style="-fx-background-color: rgba(10,25,55,0.88); -fx-border-color: rgba(59,130,246,0.35); -fx-border-width: 1; -fx-border-radius: 18; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(30,100,220,0.22), 40, 0.3, 0, 0); -fx-padding: 32 38 28 38;">
+
+      <!-- Logo row -->
+      <HBox alignment="CENTER" spacing="0.0">
+         <VBox.margin><Insets bottom="4.0" /></VBox.margin>
+         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/GameDinoLogoFull.png" />
+            </image>
+         </ImageView>
+      </HBox>
+
+      <!-- Title -->
+      <Label style="-fx-font-family: 'Segoe UI'; -fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;" text="MATCH FOUND">
+         <VBox.margin><Insets bottom="8.0" /></VBox.margin>
+      </Label>
+
+      <!-- Game badge -->
+      <Label fx:id="gameBadgeLabel" style="-fx-font-family: 'Segoe UI'; -fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #7ec8ff; -fx-background-color: rgba(59,130,246,0.18); -fx-border-color: rgba(59,130,246,0.45); -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 4 14 4 14;" text="Connect Four">
+         <VBox.margin><Insets bottom="18.0" /></VBox.margin>
+      </Label>
+
+      <!-- Divider -->
+      <Region maxHeight="1.0" prefHeight="1.0" style="-fx-background-color: rgba(59,130,246,0.2);">
+         <VBox.margin><Insets bottom="16.0" /></VBox.margin>
+      </Region>
+
+      <!-- PLAYERS section label -->
+      <Label style="-fx-font-family: 'Segoe UI'; -fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: rgba(180,210,255,0.55);" text="PLAYERS">
+         <VBox.margin><Insets bottom="10.0" /></VBox.margin>
+      </Label>
+
+      <!-- Player cards row — populated dynamically by controller -->
+      <HBox fx:id="playersRow" alignment="CENTER" spacing="18.0">
+         <VBox.margin><Insets bottom="20.0" /></VBox.margin>
+      </HBox>
+
+      <!-- Countdown number -->
+      <Label fx:id="countdownLabel" style="-fx-font-family: 'Segoe UI'; -fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: white;" text="15" />
+
+      <!-- Sub-label -->
+      <Label style="-fx-font-family: 'Segoe UI'; -fx-font-size: 11px; -fx-text-fill: rgba(160,200,255,0.5);" text="SECONDS TO ACCEPT">
+         <VBox.margin><Insets bottom="10.0" top="2.0" /></VBox.margin>
+      </Label>
+
+      <!-- Progress bar -->
+      <ProgressBar fx:id="countdownBar" maxWidth="1.7976931348623157E308" progress="1.0" style="-fx-pref-height: 6px; -fx-background-radius: 4; -fx-border-radius: 4; -fx-accent: #60a5fa;">
+         <VBox.margin><Insets bottom="18.0" /></VBox.margin>
+      </ProgressBar>
+
+      <!-- Accept / Decline buttons -->
+      <HBox spacing="10.0">
+         <Button fx:id="acceptButton" maxWidth="1.7976931348623157E308" onAction="#handleAccept" prefHeight="44.0" style="-fx-background-color: linear-gradient(to right, #1d6fdb, #3b9eff); -fx-text-fill: white; -fx-font-family: 'Segoe UI'; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-border-radius: 10; -fx-cursor: hand;" text="ACCEPT" HBox.hgrow="ALWAYS" />
+         <Button fx:id="declineButton" maxWidth="1.7976931348623157E308" onAction="#handleDecline" prefHeight="44.0" style="-fx-background-color: rgba(255,255,255,0.06); -fx-text-fill: rgba(200,220,255,0.6); -fx-font-family: 'Segoe UI'; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: rgba(255,255,255,0.12); -fx-border-width: 1; -fx-cursor: hand;" text="DECLINE" HBox.hgrow="ALWAYS" />
+      </HBox>
+
+      <!-- Legend -->
+      <HBox alignment="CENTER" spacing="20.0">
+         <VBox.margin><Insets top="14.0" /></VBox.margin>
+         <HBox alignment="CENTER_LEFT" spacing="6.0">
+            <Circle fill="#22c55e" radius="4.0" />
+            <Label style="-fx-font-family: 'Segoe UI'; -fx-font-size: 10px; -fx-text-fill: rgba(160,200,255,0.45);" text="Ready" />
+         </HBox>
+         <HBox alignment="CENTER_LEFT" spacing="6.0">
+            <Circle fill="#f59e0b" radius="4.0" />
+            <Label style="-fx-font-family: 'Segoe UI'; -fx-font-size: 10px; -fx-text-fill: rgba(160,200,255,0.45);" text="Waiting" />
+         </HBox>
+      </HBox>
+
+   </VBox>
+
+</StackPane>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane prefHeight="580.0" prefWidth="720.0" style="-fx-background-color: linear-gradient(to bottom right, #0b1f33, #4da6ff);" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng300.ui.controllers.AvatarSelectionPageController">
+
+    <VBox alignment="CENTER" maxWidth="620.0" spacing="0.0" style="-fx-background-color: rgba(5,12,24,0.93); -fx-background-radius: 22; -fx-border-color: rgba(77,166,255,0.18); -fx-border-width: 1; -fx-border-radius: 22; -fx-padding: 44 48;">
+
+        <!-- Logo + title -->
+        <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+            <image><Image url="@../images/GameDinoLogoShort.png" /></image>
+            <VBox.margin><Insets bottom="16.0" /></VBox.margin>
+        </ImageView>
+
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Choose Your Avatar" textFill="#e6f3ff" />
+        <Label style="-fx-font-size: 13px;" text="Pick the look that represents you on the platform" textFill="#7fbfff">
+            <VBox.margin><Insets bottom="36.0" top="6.0" /></VBox.margin>
+        </Label>
+
+        <!-- 4 avatar cards -->
+        <HBox alignment="CENTER" spacing="16.0">
+
+            <!-- Avatar 1 -->
+            <VBox fx:id="card1" alignment="CENTER" onMouseClicked="#handleSelectAvatar1" spacing="10.0" style="-fx-background-color: rgba(77,166,255,0.12); -fx-background-radius: 16; -fx-border-color: rgba(77,166,255,0.5); -fx-border-width: 2; -fx-border-radius: 16; -fx-padding: 18 16; -fx-cursor: hand;">
+                <StackPane prefHeight="84.0" prefWidth="84.0" style="-fx-background-color: rgba(10,25,45,0.9); -fx-background-radius: 42; -fx-border-color: rgba(77,166,255,0.35); -fx-border-width: 2; -fx-border-radius: 42;">
+                    <ImageView fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                        <image><Image url="@../images/avatar1.png" /></image>
+                        <clip><Circle centerX="42.0" centerY="42.0" radius="42.0" /></clip>
+                    </ImageView>
+                </StackPane>
+                <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Avatar 1" textFill="#e6f3ff" />
+                <Label fx:id="check1" style="-fx-font-size: 10px; -fx-font-weight: bold;" text="✓  Selected" textFill="#4da6ff" />
+            </VBox>
+
+            <!-- Avatar 2 -->
+            <VBox fx:id="card2" alignment="CENTER" onMouseClicked="#handleSelectAvatar2" spacing="10.0" style="-fx-background-color: rgba(10,25,45,0.8); -fx-background-radius: 16; -fx-border-color: rgba(77,166,255,0.15); -fx-border-width: 1.5; -fx-border-radius: 16; -fx-padding: 18 16; -fx-cursor: hand;">
+                <StackPane prefHeight="84.0" prefWidth="84.0" style="-fx-background-color: rgba(10,25,45,0.9); -fx-background-radius: 42; -fx-border-color: rgba(77,166,255,0.2); -fx-border-width: 2; -fx-border-radius: 42;">
+                    <ImageView fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                        <image><Image url="@../images/avatar2.png" /></image>
+                        <clip><Circle centerX="42.0" centerY="42.0" radius="42.0" /></clip>
+                    </ImageView>
+                </StackPane>
+                <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Avatar 2" textFill="#b9d9ff" />
+                <Label fx:id="check2" managed="false" style="-fx-font-size: 10px; -fx-font-weight: bold;" text="✓  Selected" textFill="#4da6ff" visible="false" />
+            </VBox>
+
+            <!-- Avatar 3 -->
+            <VBox fx:id="card3" alignment="CENTER" onMouseClicked="#handleSelectAvatar3" spacing="10.0" style="-fx-background-color: rgba(10,25,45,0.8); -fx-background-radius: 16; -fx-border-color: rgba(77,166,255,0.15); -fx-border-width: 1.5; -fx-border-radius: 16; -fx-padding: 18 16; -fx-cursor: hand;">
+                <StackPane prefHeight="84.0" prefWidth="84.0" style="-fx-background-color: rgba(10,25,45,0.9); -fx-background-radius: 42; -fx-border-color: rgba(77,166,255,0.2); -fx-border-width: 2; -fx-border-radius: 42;">
+                    <ImageView fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                        <image><Image url="@../images/avatar3.png" /></image>
+                        <clip><Circle centerX="42.0" centerY="42.0" radius="42.0" /></clip>
+                    </ImageView>
+                </StackPane>
+                <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Avatar 3" textFill="#b9d9ff" />
+                <Label fx:id="check3" managed="false" style="-fx-font-size: 10px; -fx-font-weight: bold;" text="✓  Selected" textFill="#4da6ff" visible="false" />
+            </VBox>
+
+            <!-- Avatar 4 -->
+            <VBox fx:id="card4" alignment="CENTER" onMouseClicked="#handleSelectAvatar4" spacing="10.0" style="-fx-background-color: rgba(10,25,45,0.8); -fx-background-radius: 16; -fx-border-color: rgba(77,166,255,0.15); -fx-border-width: 1.5; -fx-border-radius: 16; -fx-padding: 18 16; -fx-cursor: hand;">
+                <StackPane prefHeight="84.0" prefWidth="84.0" style="-fx-background-color: rgba(10,25,45,0.9); -fx-background-radius: 42; -fx-border-color: rgba(77,166,255,0.2); -fx-border-width: 2; -fx-border-radius: 42;">
+                    <ImageView fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+                        <image><Image url="@../images/avatar4.png" /></image>
+                        <clip><Circle centerX="42.0" centerY="42.0" radius="42.0" /></clip>
+                    </ImageView>
+                </StackPane>
+                <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Avatar 4" textFill="#b9d9ff" />
+                <Label fx:id="check4" managed="false" style="-fx-font-size: 10px; -fx-font-weight: bold;" text="✓  Selected" textFill="#4da6ff" visible="false" />
+            </VBox>
+
+        </HBox>
+
+        <Region maxHeight="32.0" prefHeight="32.0" />
+
+        <!-- Action row -->
+        <HBox alignment="CENTER" spacing="12.0">
+            <Button onAction="#handleSkip" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: rgba(10,25,45,0.9); -fx-text-fill: #7fbfff; -fx-font-size: 13px; -fx-background-radius: 10; -fx-border-color: rgba(77,166,255,0.2); -fx-border-width: 1; -fx-border-radius: 10; -fx-cursor: hand;" text="Skip" />
+            <Button onAction="#handleConfirm" prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #4da6ff, #1e90ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 10; -fx-cursor: hand;" text="Confirm Selection" />
+        </HBox>
+
+    </VBox>
+
+</StackPane>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="649.0" prefWidth="640.0" style="-fx-background-color: linear-gradient(to bottom right, #0b1f33, #4da6ff);" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng300.ui.controllers.ProfilePageController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="80.0" layoutY="42.0" prefHeight="565.0" prefWidth="480.0" spacing="18.0" style="-fx-background-color: rgba(10,25,45,0.92); -fx-background-radius: 20; -fx-border-color: rgba(77,166,255,0.25); -fx-border-width: 1.2; -fx-border-radius: 20; -fx-padding: 28;">
+         <children>
+            <ImageView fitHeight="69.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/GameDinoLogoFull.png" />
+               </image>
+            </ImageView>
+            <Label style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold;" text="PLAYER PROFILE" />
+            <Label style="-fx-text-fill: rgba(255,255,255,0.75); -fx-font-size: 14px;" text="Overview of account details and match statistics" />
+            <Region prefHeight="8.0" />
+            <VBox maxWidth="1.7976931348623157E308" spacing="12.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="16.0" style="-fx-background-color: #0f2942; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25);">
+                     <padding>
+                        <Insets bottom="14.0" left="18.0" right="18.0" top="14.0" />
+                     </padding>
+                     <children>
+                        <Label minWidth="150.0" style="-fx-text-fill: #8fc4ff; -fx-font-size: 14px; -fx-font-weight: bold;" text="Username" />
+                        <Label fx:id="usernameLabel" style="-fx-text-fill: white; -fx-font-size: 16px;" text="username" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="16.0" style="-fx-background-color: #0f2942; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25);">
+                     <padding>
+                        <Insets bottom="14.0" left="18.0" right="18.0" top="14.0" />
+                     </padding>
+                     <children>
+                        <Label minWidth="150.0" style="-fx-text-fill: #8fc4ff; -fx-font-size: 14px; -fx-font-weight: bold;" text="First Name" />
+                        <Label fx:id="firstNameLabel" style="-fx-text-fill: white; -fx-font-size: 16px;" text="first name" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="16.0" style="-fx-background-color: #0f2942; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25);">
+                     <padding>
+                        <Insets bottom="14.0" left="18.0" right="18.0" top="14.0" />
+                     </padding>
+                     <children>
+                        <Label minWidth="150.0" style="-fx-text-fill: #8fc4ff; -fx-font-size: 14px; -fx-font-weight: bold;" text="Last Name" />
+                        <Label fx:id="lastNameLabel" style="-fx-text-fill: white; -fx-font-size: 16px;" text="last name" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="16.0" style="-fx-background-color: #0f2942; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25);">
+                     <padding>
+                        <Insets bottom="14.0" left="18.0" right="18.0" top="14.0" />
+                     </padding>
+                     <children>
+                        <Label minWidth="150.0" style="-fx-text-fill: #8fc4ff; -fx-font-size: 14px; -fx-font-weight: bold;" text="Rank" />
+                        <Label fx:id="rankLabel" style="-fx-text-fill: white; -fx-font-size: 16px;" text="Unranked" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="16.0" style="-fx-background-color: #0f2942; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25);">
+                     <padding>
+                        <Insets bottom="14.0" left="18.0" right="18.0" top="14.0" />
+                     </padding>
+                     <children>
+                        <Label minWidth="150.0" style="-fx-text-fill: #8fc4ff; -fx-font-size: 14px; -fx-font-weight: bold;" text="Matches Played" />
+                        <Label fx:id="matchesPlayedLabel" style="-fx-text-fill: white; -fx-font-size: 16px;" text="0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="16.0" style="-fx-background-color: #0f2942; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25);">
+                     <padding>
+                        <Insets bottom="14.0" left="18.0" right="18.0" top="14.0" />
+                     </padding>
+                     <children>
+                        <Label minWidth="150.0" style="-fx-text-fill: #8fc4ff; -fx-font-size: 14px; -fx-font-weight: bold;" text="Wins" />
+                        <Label fx:id="winsLabel" style="-fx-text-fill: white; -fx-font-size: 16px;" text="0" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="returnButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleReturnButtonClick" prefHeight="46.0" style="-fx-background-color: #0f2942; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: rgba(77,166,255,0.25);" text="RETURN" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

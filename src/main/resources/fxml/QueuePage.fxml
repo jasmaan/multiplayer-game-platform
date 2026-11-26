@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="480.0" prefWidth="560.0" style="-fx-background-color: linear-gradient(to bottom right, #0b1f33, #4da6ff);" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng300.ui.controllers.QueuePageController">
+
+    <VBox alignment="CENTER" maxHeight="400.0" maxWidth="440.0" spacing="0.0" style="-fx-background-color: rgba(5,12,24,0.92); -fx-background-radius: 20; -fx-border-color: rgba(77,166,255,0.15); -fx-border-width: 1; -fx-border-radius: 20; -fx-padding: 48 52;">
+
+        <!-- Logo -->
+        <HBox alignment="CENTER">
+            <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                <image><Image url="@../images/GameDinoLogoShort.png" /></image>
+            </ImageView>
+        </HBox>
+
+        <Region maxHeight="20.0" prefHeight="20.0" />
+
+        <!-- Game name -->
+        <Label fx:id="gameNameLabel" style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Matchmaking" textFill="#e6f3ff" />
+
+        <Region maxHeight="6.0" prefHeight="6.0" />
+
+        <Label style="-fx-font-size: 13px;" text="Finding you the perfect match..." textFill="#7fbfff" />
+
+        <Region maxHeight="32.0" prefHeight="32.0" />
+
+        <!-- Spinner -->
+        <HBox alignment="CENTER">
+            <ProgressIndicator prefHeight="64.0" prefWidth="64.0" style="-fx-progress-color: #4da6ff;" />
+        </HBox>
+
+        <Region maxHeight="20.0" prefHeight="20.0" />
+
+        <!-- Status label -->
+        <Label fx:id="statusLabel" style="-fx-font-size: 12px;" text="Searching for opponent..." textFill="#b9d9ff" />
+
+        <Region maxHeight="36.0" prefHeight="36.0" />
+
+        <!-- Cancel button -->
+        <Button maxWidth="1.7976931348623157E308" onAction="#handleCancelQueue" prefHeight="42.0" style="-fx-background-color: rgba(200,50,50,0.15); -fx-text-fill: #ff8080; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 10; -fx-border-color: rgba(255,100,100,0.3); -fx-border-width: 1; -fx-border-radius: 10; -fx-cursor: hand;" text="Cancel" />
+
+    </VBox>
+
+</StackPane>

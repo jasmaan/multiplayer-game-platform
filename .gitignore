@@ -1,0 +1,29 @@
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+.kotlin
+
+### IntelliJ IDEA ###
+.idea/
+out/
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/
+.claude/
+.codex
+settings.local.json
+
+### Mac OS ###
+.DS_Store
+
+# --- Logs ---
+*.log
+
+# --- Presence heartbeat files ---
+data/online/
+
+# --- Personal Planning Docs ---
+docs/planning/

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="660.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(to bottom right, #0b1f33, #4da6ff);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.seng300.ui.controllers.GameRoomPageController">
+
+    <!-- ─────────────────── TOP HEADER ─────────────────── -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="14.0" style="-fx-background-color: rgba(5,12,24,0.97); -fx-border-color: rgba(77,166,255,0.1); -fx-border-width: 0 0 1 0; -fx-padding: 16 24;">
+            <Button onAction="#handleBackToDashboard" prefHeight="34.0" style="-fx-background-color: rgba(77,166,255,0.12); -fx-text-fill: #7fbfff; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.25); -fx-border-width: 1; -fx-border-radius: 8; -fx-cursor: hand; -fx-padding: 0 16;" text="← Back" />
+            <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                <image><Image url="@../images/GameDinoLogoShort.png" /></image>
+            </ImageView>
+            <Label fx:id="gameNameLabel" style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Game Rooms" textFill="#e6f3ff" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleRefresh" prefHeight="34.0" style="-fx-background-color: rgba(77,166,255,0.08); -fx-text-fill: #7fbfff; -fx-font-size: 12px; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.18); -fx-border-width: 1; -fx-border-radius: 8; -fx-cursor: hand; -fx-padding: 0 14;" text="⟳  Refresh" />
+        </HBox>
+    </top>
+
+    <!-- ─────────────────── LEFT ACTIONS PANEL ─────────────────── -->
+    <left>
+        <VBox prefWidth="240.0" spacing="0.0" style="-fx-background-color: rgba(5,12,24,0.97); -fx-border-color: rgba(77,166,255,0.07); -fx-border-width: 0 1 0 0; -fx-padding: 28 16 24 16;">
+
+            <Label style="-fx-font-size: 11px; -fx-font-weight: bold;" text="Quick Actions" textFill="#b9d9ff" />
+
+            <Region maxHeight="10.0" prefHeight="10.0" />
+
+            <!-- Create Room -->
+            <Button fx:id="createRoomBtn" maxWidth="1.7976931348623157E308" onAction="#handleCreateRoom" prefHeight="44.0" style="-fx-background-color: linear-gradient(to right, #4da6ff, #1e90ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 10; -fx-cursor: hand;" text="+ Create Room" />
+
+            <Region maxHeight="10.0" prefHeight="10.0" />
+
+            <!-- Join Queue -->
+            <Button fx:id="joinQueueBtn" maxWidth="1.7976931348623157E308" onAction="#handleJoinQueue" prefHeight="44.0" style="-fx-background-color: rgba(77,166,255,0.15); -fx-text-fill: #4da6ff; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 10; -fx-border-color: rgba(77,166,255,0.4); -fx-border-width: 1; -fx-border-radius: 10; -fx-cursor: hand;" text="⚡  Join Queue" />
+
+            <Region maxHeight="10.0" prefHeight="10.0" />
+
+            <!-- Play vs Bot -->
+            <Button maxWidth="1.7976931348623157E308" onAction="#handlePlayBot" prefHeight="44.0" style="-fx-background-color: rgba(64,208,144,0.12); -fx-text-fill: #40d090; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 10; -fx-border-color: rgba(64,208,144,0.35); -fx-border-width: 1; -fx-border-radius: 10; -fx-cursor: hand;" text="🤖  Play vs Bot" />
+
+            <!-- Queue status -->
+            <Region maxHeight="12.0" prefHeight="12.0" />
+            <VBox fx:id="queueStatusBox" managed="false" spacing="6.0" style="-fx-background-color: rgba(77,166,255,0.08); -fx-background-radius: 10; -fx-border-color: rgba(77,166,255,0.2); -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 12 14;" visible="false">
+                <Label style="-fx-font-size: 10px; -fx-font-weight: bold;" text="IN QUEUE" textFill="#4da6ff" />
+                <Label fx:id="queueStatusLabel" style="-fx-font-size: 11px;" text="Searching for opponent..." textFill="#b9d9ff" wrapText="true" />
+                <Button maxWidth="1.7976931348623157E308" onAction="#handleLeaveQueue" prefHeight="30.0" style="-fx-background-color: rgba(200,50,50,0.15); -fx-text-fill: #ff8080; -fx-font-size: 11px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: rgba(255,100,100,0.25); -fx-border-width: 1; -fx-border-radius: 8; -fx-cursor: hand;" text="Leave Queue" />
+            </VBox>
+
+
+            <Region VBox.vgrow="ALWAYS" />
+
+            <!-- Divider -->
+            <Region maxHeight="1.0" prefHeight="1.0" style="-fx-background-color: rgba(77,166,255,0.07);">
+                <VBox.margin><Insets bottom="14.0" /></VBox.margin>
+            </Region>
+
+            <!-- Room count hint -->
+            <Label fx:id="roomCountLabel" style="-fx-font-size: 11px;" text="0 rooms available" textFill="#3d6080" />
+        </VBox>
+    </left>
+
+    <!-- ─────────────────── CENTER ROOM LIST ─────────────────── -->
+    <center>
+        <VBox spacing="16.0" style="-fx-padding: 24 24 20 24;">
+
+            <!-- Room status banner (compact, shown when user has an active room) -->
+            <HBox fx:id="roomStatusBanner" alignment="CENTER_LEFT" managed="false" spacing="12.0" style="-fx-background-color: rgba(40,208,144,0.07); -fx-background-radius: 8; -fx-border-color: rgba(64,208,144,0.3); -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 8 14;" visible="false">
+                <Label style="-fx-font-size: 10px; -fx-font-weight: bold;" text="IN ROOM" textFill="#40d090" />
+                <Label fx:id="currentRoomLabel" style="-fx-font-size: 11px;" text="Room …" textFill="#b9d9ff" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="startGameBtn" onAction="#handleStartGame" prefHeight="30.0" style="-fx-background-color: linear-gradient(to right, #40d090, #20b070); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 0 14;" text="▶  Start Game" />
+                <Button fx:id="cancelRoomBtn" onAction="#handleCancelRoom" prefHeight="30.0" style="-fx-background-color: rgba(200,50,50,0.12); -fx-text-fill: #ff8080; -fx-font-size: 11px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: rgba(255,100,100,0.25); -fx-border-width: 1; -fx-border-radius: 8; -fx-cursor: hand; -fx-padding: 0 12;" text="✕  Cancel Room" />
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Available Rooms" textFill="#e6f3ff" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="gameTypeTag" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-background-color: rgba(77,166,255,0.12); -fx-background-radius: 6; -fx-border-color: rgba(77,166,255,0.3); -fx-border-width: 1; -fx-border-radius: 6; -fx-padding: 3 10;" text="" textFill="#4da6ff" />
+            </HBox>
+
+            <!-- Room list (scrollable) -->
+            <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+                <VBox fx:id="roomListContainer" spacing="10.0" style="-fx-padding: 2 2 2 2;" />
+            </ScrollPane>
+
+        </VBox>
+    </center>
+
+</BorderPane>

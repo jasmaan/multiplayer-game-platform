@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="700.0" prefWidth="1060.0"
+    style="-fx-background-color: linear-gradient(to bottom right, #0b1f33, #163d78);"
+    xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="ca.ucalgary.seng300.ui.controllers.CheckersGamePageController">
+
+    <BorderPane>
+        <top>
+            <HBox alignment="CENTER_LEFT" spacing="14.0"
+                style="-fx-background-color: rgba(5,12,24,0.97); -fx-border-color: rgba(77,166,255,0.1); -fx-border-width: 0 0 1 0; -fx-padding: 16 24;">
+                <Button onAction="#handleBackToDashboard" prefHeight="32.0"
+                    style="-fx-background-color: rgba(77,166,255,0.12); -fx-text-fill: #7fbfff; -fx-font-size: 12px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.25); -fx-border-width: 1; -fx-border-radius: 8; -fx-cursor: hand; -fx-padding: 0 14;"
+                    text="← Back" />
+                <ImageView fitHeight="26.0" fitWidth="26.0" preserveRatio="true" pickOnBounds="true">
+                    <image><Image url="@../images/gameDinoLogo.png" /></image>
+                </ImageView>
+                <Label text="Checkers" textFill="#e6f3ff"
+                    style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+                <Label text="[]" textFill="#4da6ff"
+                    style="-fx-font-size: 14px;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="sessionIdLabel" text="" textFill="#3d6080"
+                    style="-fx-font-size: 10px;" />
+            </HBox>
+        </top>
+
+        <left>
+            <VBox prefWidth="200.0" spacing="0.0"
+                style="-fx-background-color: rgba(5,12,24,0.97); -fx-border-color: rgba(77,166,255,0.07); -fx-border-width: 0 1 0 0; -fx-padding: 28 16 24 16;">
+                <Label text="PLAYERS" textFill="#3d6080"
+                    style="-fx-font-size: 10px; -fx-font-weight: bold;">
+                    <VBox.margin><Insets bottom="12.0" /></VBox.margin>
+                </Label>
+
+                <VBox fx:id="player1Card" spacing="4.0"
+                    style="-fx-background-color: rgba(77,166,255,0.12); -fx-background-radius: 12; -fx-border-color: rgba(77,166,255,0.4); -fx-border-width: 1.5; -fx-border-radius: 12; -fx-padding: 12 14;">
+                    <HBox alignment="CENTER_LEFT" spacing="8.0">
+                        <Label text="W" textFill="#4da6ff"
+                            style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                        <VBox spacing="1.0">
+                            <Label fx:id="player1Label" text="Player 1" textFill="#e6f3ff"
+                                style="-fx-font-size: 12px; -fx-font-weight: bold;" />
+                            <Label text="White" textFill="#3d6080"
+                                style="-fx-font-size: 10px;" />
+                        </VBox>
+                    </HBox>
+                    <Label fx:id="player1TurnLabel" text="Your turn" textFill="#4da6ff"
+                        style="-fx-font-size: 10px; -fx-font-weight: bold;" />
+                </VBox>
+
+                <Region prefHeight="10.0" maxHeight="10.0" />
+
+                <HBox alignment="CENTER" spacing="8.0">
+                    <Region HBox.hgrow="ALWAYS" prefHeight="1.0" maxHeight="1.0"
+                        style="-fx-background-color: rgba(77,166,255,0.1);" />
+                    <Label text="VS" textFill="#3d6080"
+                        style="-fx-font-size: 10px; -fx-font-weight: bold;" />
+                    <Region HBox.hgrow="ALWAYS" prefHeight="1.0" maxHeight="1.0"
+                        style="-fx-background-color: rgba(77,166,255,0.1);" />
+                </HBox>
+
+                <Region prefHeight="10.0" maxHeight="10.0" />
+
+                <VBox fx:id="player2Card" spacing="4.0"
+                    style="-fx-background-color: rgba(10,25,45,0.8); -fx-background-radius: 12; -fx-border-color: rgba(77,166,255,0.15); -fx-border-width: 1; -fx-border-radius: 12; -fx-padding: 12 14;">
+                    <HBox alignment="CENTER_LEFT" spacing="8.0">
+                        <Label text="B" textFill="#ff8040"
+                            style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                        <VBox spacing="1.0">
+                            <Label fx:id="player2Label" text="Player 2" textFill="#b9d9ff"
+                                style="-fx-font-size: 12px; -fx-font-weight: bold;" />
+                            <Label text="Black" textFill="#3d6080"
+                                style="-fx-font-size: 10px;" />
+                        </VBox>
+                    </HBox>
+                    <Label fx:id="player2TurnLabel" text="Waiting..." textFill="#3d6080"
+                        style="-fx-font-size: 10px;" />
+                </VBox>
+
+                <Region VBox.vgrow="ALWAYS" />
+
+                <VBox spacing="6.0"
+                    style="-fx-background-color: rgba(10,25,45,0.8); -fx-background-radius: 10; -fx-border-color: rgba(77,166,255,0.12); -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 12 14;">
+                    <Label text="TURN" textFill="#3d6080"
+                        style="-fx-font-size: 10px; -fx-font-weight: bold;" />
+                    <Label fx:id="turnStatusLabel" text="White to move" textFill="#e6f3ff"
+                        style="-fx-font-size: 13px; -fx-font-weight: bold;" />
+                    <Label fx:id="moveCountLabel" text="Move 1" textFill="#3d6080"
+                        style="-fx-font-size: 10px;" />
+                </VBox>
+            </VBox>
+        </left>
+
+        <center>
+            <StackPane fx:id="boardContainer" alignment="CENTER"
+                style="-fx-padding: 24;" />
+        </center>
+
+        <right>
+            <VBox prefWidth="220.0" spacing="0.0"
+                style="-fx-background-color: rgba(5,12,24,0.97); -fx-border-color: rgba(77,166,255,0.07); -fx-border-width: 0 0 0 1; -fx-padding: 20 14 14 14;">
+                <HBox alignment="CENTER_LEFT" spacing="6.0">
+                    <Label text="CHAT" textFill="#3d6080"
+                        style="-fx-font-size: 10px; -fx-font-weight: bold;" />
+                </HBox>
+                <Region prefHeight="1.0" maxHeight="1.0"
+                    style="-fx-background-color: rgba(77,166,255,0.1);">
+                    <VBox.margin><Insets top="8.0" bottom="10.0" /></VBox.margin>
+                </Region>
+
+                <ScrollPane fx:id="chatScrollPane" VBox.vgrow="ALWAYS" fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    style="-fx-background: rgba(5,15,35,0.8); -fx-background-color: rgba(5,15,35,0.8); -fx-border-color: rgba(77,166,255,0.12); -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 0;">
+                    <VBox fx:id="chatMessagesBox" spacing="5.0" fillWidth="true"
+                        style="-fx-background-color: transparent; -fx-padding: 8 6;" />
+                </ScrollPane>
+
+                <Region prefHeight="10.0" maxHeight="10.0" />
+
+                <HBox spacing="6.0" alignment="CENTER">
+                    <TextField fx:id="chatInputField" HBox.hgrow="ALWAYS"
+                        promptText="Say something..." onAction="#handleSendChat"
+                        style="-fx-background-color: rgba(8,20,45,0.9); -fx-text-fill: #e6f3ff; -fx-prompt-text-fill: #3d6080; -fx-border-color: rgba(77,166,255,0.18); -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 7 10; -fx-font-size: 11px;" />
+                    <Button onAction="#handleSendChat" prefWidth="34.0" prefHeight="34.0"
+                        style="-fx-background-color: rgba(77,166,255,0.18); -fx-text-fill: #4da6ff; -fx-font-size: 14px; -fx-background-radius: 8; -fx-border-color: rgba(77,166,255,0.25); -fx-border-width: 1; -fx-border-radius: 8; -fx-cursor: hand; -fx-padding: 0;"
+                        text=">" />
+                </HBox>
+            </VBox>
+        </right>
+    </BorderPane>
+
+    <!-- ══════════════════════════ TURN NOTIFICATION BADGE ══════════════════════════ -->
+    <HBox fx:id="turnBadge" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0"
+        style="-fx-background-color: rgba(8,20,42,0.96); -fx-background-radius: 24; -fx-border-color: rgba(77,166,255,0.45); -fx-border-width: 1.5; -fx-border-radius: 24; -fx-padding: 7 14; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 16, 0, 0, 4);"
+        visible="false" StackPane.alignment="TOP_CENTER">
+        <StackPane.margin><Insets top="70.0" /></StackPane.margin>
+        <Label fx:id="turnBadgeIcon" style="-fx-font-size: 12px;" text="▶" textFill="#4da6ff" />
+        <Label fx:id="turnBadgeLabel" style="-fx-font-size: 13px; -fx-font-weight: bold;" text="White to move" textFill="#e6f3ff" />
+        <Button onAction="#handleDismissBadge" prefHeight="22.0" prefWidth="22.0"
+            style="-fx-background-color: rgba(77,166,255,0.15); -fx-text-fill: #7fbfff; -fx-font-size: 10px; -fx-background-radius: 11; -fx-cursor: hand; -fx-padding: 0;" text="✕" />
+    </HBox>
+
+    <StackPane fx:id="forfeitOverlay" visible="false" managed="false">
+        <Region style="-fx-background-color: rgba(0,0,0,0.65);" />
+        <VBox maxWidth="340.0" maxHeight="-Infinity" spacing="0.0" alignment="TOP_LEFT"
+            style="-fx-background-color: rgba(8,20,42,0.98); -fx-background-radius: 18; -fx-border-color: rgba(255,100,100,0.4); -fx-border-width: 1; -fx-border-radius: 18; -fx-padding: 28 28 22 28; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 30, 0, 0, 8);">
+            <Label text="Leave Game?" textFill="#ff8080"
+                style="-fx-font-size: 18px; -fx-font-weight: bold;">
+                <VBox.margin><Insets bottom="10.0" /></VBox.margin>
+            </Label>
+            <Label textFill="#7fbfff" wrapText="true"
+                text="If you leave now you will forfeit the match. You will receive a loss and your opponent will be awarded the win."
+                style="-fx-font-size: 12px;">
+                <VBox.margin><Insets bottom="24.0" /></VBox.margin>
+            </Label>
+            <Button maxWidth="1.7976931348623157E308" prefHeight="42.0"
+                onAction="#handleConfirmForfeit"
+                style="-fx-background-color: rgba(200,50,50,0.2); -fx-text-fill: #ff8080; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 10; -fx-border-color: rgba(255,100,100,0.35); -fx-border-width: 1; -fx-border-radius: 10; -fx-cursor: hand;"
+                text="Leave and Forfeit">
+                <VBox.margin><Insets bottom="8.0" /></VBox.margin>
+            </Button>
+            <Button maxWidth="1.7976931348623157E308" prefHeight="42.0"
+                onAction="#handleCancelForfeit"
+                style="-fx-background-color: rgba(77,166,255,0.15); -fx-text-fill: #4da6ff; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 10; -fx-border-color: rgba(77,166,255,0.3); -fx-border-width: 1; -fx-border-radius: 10; -fx-cursor: hand;"
+                text="Stay in Game" />
+        </VBox>
+    </StackPane>
+
+    <StackPane fx:id="gameOverOverlay" visible="false" managed="false">
+        <Region style="-fx-background-color: rgba(0,0,0,0.75);" />
+        <VBox fx:id="gameOverCard" maxWidth="380.0" maxHeight="-Infinity" alignment="CENTER" spacing="0.0"
+            style="-fx-background-color: rgba(8,20,42,0.98); -fx-background-radius: 22;
+                   -fx-border-color: rgba(77,166,255,0.35); -fx-border-width: 1; -fx-border-radius: 22;
+                   -fx-padding: 36 36 28 36;
+                   -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 40, 0, 0, 10);" />
+    </StackPane>
+
+    <StackPane fx:id="playAgainWaitOverlay" visible="false" managed="false">
+        <Region style="-fx-background-color: rgba(0,0,0,0.55);" />
+        <VBox maxWidth="320.0" maxHeight="-Infinity" alignment="TOP_LEFT" spacing="0.0"
+            style="-fx-background-color: rgba(8,20,42,0.98); -fx-background-radius: 16;
+                   -fx-border-color: rgba(77,166,255,0.3); -fx-border-width: 1; -fx-border-radius: 16;
+                   -fx-padding: 18 20 20 20;
+                   -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 24, 0, 0, 6);">
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+                <Label text="Waiting..." textFill="#4da6ff"
+                    style="-fx-font-size: 13px; -fx-font-weight: bold;" HBox.hgrow="ALWAYS" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button onAction="#handleDismissWait" prefWidth="24.0" prefHeight="24.0"
+                    text="X"
+                    style="-fx-background-color: rgba(77,166,255,0.12); -fx-text-fill: #7fbfff;
+                           -fx-font-size: 11px; -fx-background-radius: 12; -fx-cursor: hand; -fx-padding: 0;" />
+            </HBox>
+            <Region prefHeight="10.0" maxHeight="10.0" />
+            <Label fx:id="waitingMessageLabel" text="" textFill="#b9d9ff" wrapText="true"
+                style="-fx-font-size: 12px;">
+                <VBox.margin><Insets bottom="4.0" /></VBox.margin>
+            </Label>
+            <Label text="Dismiss to return to result screen." textFill="#3d6080"
+                style="-fx-font-size: 10px;" wrapText="true" />
+        </VBox>
+    </StackPane>
+
+    <HBox fx:id="forfeitToast" visible="false" managed="false" alignment="CENTER" spacing="10.0"
+        maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_CENTER"
+        style="-fx-background-color: rgba(8,20,42,0.96); -fx-background-radius: 24;
+               -fx-border-color: rgba(77,166,255,0.45); -fx-border-width: 1.5; -fx-border-radius: 24;
+               -fx-padding: 7 14; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 16, 0, 0, 4);">
+        <StackPane.margin><Insets top="70.0" /></StackPane.margin>
+        <Label text="▶" textFill="#4da6ff" style="-fx-font-size: 12px;" />
+        <Label fx:id="forfeitToastLabel" text="" textFill="#e6f3ff"
+            style="-fx-font-size: 13px; -fx-font-weight: bold;" />
+    </HBox>
+
+</StackPane>
